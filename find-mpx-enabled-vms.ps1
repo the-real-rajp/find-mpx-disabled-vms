@@ -21,7 +21,7 @@ if (!(Get-Module -Name VMware.VimAutomation.Core)) {
 }
 
 # Connect to vCenter
-Connect-VIServer -Server vcenter.home.lab -User 'administrator@vsphere.local' -Password 'EUc7;egEFbw,Z7zf'
+Connect-VIServer -Server vcenter.home.lab -User '<USERMANE>' -Password '<PASSWORD>'
 
 # Get a list of all VMs
 $VMs = Get-VM
