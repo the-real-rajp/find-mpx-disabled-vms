@@ -10,16 +10,3 @@ You will be given a username and password prompt. There scripts do not store any
 This script runs powershell commands that find MPX settings on all VMs in one vCenter.
 
 User must have read access to vCenter.
-
-# set-mpx-to-false.ps1
-
-This script runs powershell commands that set MPX settings on all VMs in one vCenter to false
-
-User must have read/write access to vCenter.
-
-# set-mpx-to-true.ps1
-
-This script runs powershell commands that set MPX settings on all VMs in one vCenter to true
-
-User must have read/write access to vCenter.
-
