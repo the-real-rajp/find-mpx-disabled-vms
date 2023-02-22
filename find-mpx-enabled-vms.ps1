@@ -20,8 +20,12 @@ if (!(Get-Module -Name VMware.VimAutomation.Core)) {
   Import-Module VMware.VimAutomation.Core
 }
 
+# Get vCenter Server name and credentials from promoted prompt
+$VIServer = Read-Host "Enter vCenter Server name or IP address"
+$Credential = Get-Credential -Message "Enter your vCenter credentials"
+
 # Connect to vCenter
-Connect-VIServer -Server <VCENTER> -User '<USERMANE>' -Password '<PASSWORD>'
+Connect-VIServer -Server $VIServer -Credential $Credential
 
 # Get a list of all VMs
 $VMs = Get-VM
@@ -42,9 +46,14 @@ foreach ($VM in $VMs) {
   } else {
     $MPXEnabled = $False
   }
+  
+  $HardwareVersion = $VM.ExtensionData.Config.Version
+  
   $VMInfo = New-Object PSObject -Property @{
     "VMName" = $VM.Name
     "MPXEnabled" = $MPXEnabled
+    "HardwareVersion" = $HardwareVersion
+
   }
   $MPXEnabledVMs += $VMInfo
   Write-Output $VMInfo
